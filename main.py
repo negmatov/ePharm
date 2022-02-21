@@ -8,11 +8,6 @@ app = FastAPI()
 # Response и response_model - урок 9
 
 
-# pydantic Field - урок 8
-
-# пишем свой валидатор поля в pydantic - урок 7
-
-
 # Path параметры и валидация - урок 5
 @app.get("/pharmacy/{pk}")
 async def get_singel_pharmacy(pk: int = Path(..., gt=1, le=20), pages: int = Query(None, gt=10, le=500)):

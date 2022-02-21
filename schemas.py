@@ -1,6 +1,7 @@
-from typing import List
-from pydantic import BaseModel, validator
 from datetime import date
+from typing import List
+
+from pydantic import BaseModel, Field
 
 
 # request body и pydantic модели - урок 3
@@ -8,18 +9,13 @@ class WorkHours(BaseModel):
     name: str
 
 
-# Body - урок 6
+# Body - урок 6 + # pydantic Field - урок 8
 class Owner(BaseModel):
-    first_name: str
-    last_name: str
-    age: int
+    first_name: str = Field(..., max_length=15, min_length=3)
+    last_name: str = Field(..., max_length=15, min_length=3)
+    age: int = Field(..., gt=18, lt=90, description="Возраст владельца должен быть старше 18 и меньше 90 лет.")
 
-    # пишем свой валидатор поля в pydantic - урок 7
-    @validator('age')
-    def check_age(cls, v):
-        if v < 18:
-            raise ValueError('Возраст владельца должен быть больше 18 лет')
-        return v
+
 
 class Pharmacy(BaseModel):
     name_pharm: str
