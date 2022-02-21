@@ -1,3 +1,9 @@
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+---**main.py**---
+https://www.youtube.com/watch?v=lCf39hGt9uI
+Query(None, min_length=2, max_length=6) максимальная и минимальная значения.
+Query(..., description="Search Pharmacy") ...Элипсис Питона - параметр Query
+Query(description="Search Pharmacy", regex="test") регулярные выражения = Query("test", description="Search Pharmacy")
+q: List[str] = Query(["test1", "test2"], description="Search Pharmacy")
+List[str] = Query(["Test1", "Teat2"], description="Search Pharmacy", deprecated=True)) к функции List если даный устарел deprecated=True
+
+async def get_singel_pharmacy() можно указать дополнительные проверки УРЛ и параметери который передаем
